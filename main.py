@@ -26,7 +26,7 @@ class Water:
         node = Node(idnode, x, y, location_type)
         self.nodes[idnode] = node
         return node
-
+    
     def connect_nodes(self, id1, id2):
         if id1 in self.nodes and id2 in self.nodes:
             self.nodes[id1].add_edge(self.nodes[id2])
@@ -52,7 +52,7 @@ class Water:
 
     def edge_list(self):
         for nodeid,node in self.nodes.items():
-            print(f"ID: {nodeid} -> ", end="")
+            print(f"ID: {nodeid} -- ", end="")
             for edge in node.edges:
                 print(f"{edge.id} ", end="")
             print()
@@ -122,34 +122,32 @@ n58 = river.add_node(58, 380, -220, 'junction')
 n59 = river.add_node(59, 190, -205, 'junction')
 
 river.connect_nodes(1, 42)
-river.connect_nodes(42, 33)
 river.connect_nodes(42, 3)
-river.connect_nodes(3, 4)
-river.connect_nodes(4, 33)
+river.connect_nodes(42, 33)
+river.connect_nodes(33, 4)
 river.connect_nodes(33, 34)
 river.connect_nodes(34, 5)
 river.connect_nodes(34, 59)
-river.connect_nodes(59, 35)
 river.connect_nodes(59, 17)
+river.connect_nodes(59, 35)
 river.connect_nodes(35, 18)
 river.connect_nodes(35, 2)
-river.connect_nodes(2, 36)
-river.connect_nodes(36, 37)
 river.connect_nodes(2, 19)
+river.connect_nodes(2, 36)
 river.connect_nodes(36, 20)
-river.connect_nodes(37, 39)
+river.connect_nodes(36, 37)
 river.connect_nodes(37, 16)
-river.connect_nodes(39, 38)
+river.connect_nodes(37, 39)
 river.connect_nodes(39, 55)
-river.connect_nodes(38, 41)
+river.connect_nodes(39, 38)
 river.connect_nodes(38, 49)
+river.connect_nodes(38, 41)
 river.connect_nodes(41, 40)
 river.connect_nodes(40, 6)
 river.connect_nodes(40, 7)
 river.connect_nodes(41, 43)
 river.connect_nodes(43, 8)
 river.connect_nodes(43, 9)
-river.connect_nodes(39, 55)
 river.connect_nodes(55, 56)
 river.connect_nodes(56, 57)
 river.connect_nodes(56, 58)
@@ -172,11 +170,11 @@ river.connect_nodes(44, 12)
 river.connect_nodes(47, 13)
 river.connect_nodes(46, 50)
 river.connect_nodes(50, 51)
+river.connect_nodes(50, 52)
 river.connect_nodes(51, 28)
 river.connect_nodes(51, 27)
-river.connect_nodes(51, 52)
 river.connect_nodes(52, 26)
-river.connect_nodes(53, 53)
+river.connect_nodes(52, 53)
 river.connect_nodes(53, 30)
 river.connect_nodes(53, 54)
 river.connect_nodes(54, 31)
@@ -185,7 +183,7 @@ river.connect_nodes(54, 32)
 
 # try to calculate the distance
 print("Distance between Node 1 and Node 2:", river.get_distance(1, 2))
-print("DFS Traversal:")
+print("DFS Traversal from Node 1:")
 
 # travel the nodes
 river.dfs(1)
